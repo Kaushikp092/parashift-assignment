@@ -23,7 +23,7 @@ const Navbar = () => {
 
             {/* Mobile view menu */}
             {menuOpen && (
-                <div className="md:hidden bg-gray-400 p-4 text-center">
+                <div className="md:hidden sticky top-19 bg-gray-400 p-4 text-center">
                     <span className="text-xl font-semibold text-red-900">Blog</span>
                 </div>
             )}
