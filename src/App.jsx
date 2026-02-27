@@ -1,13 +1,13 @@
-import Navbar from "./components/Navbar/Navbar"
+import Navbar from "./components/Navbar/Navbar";
+import BlogListingPage from "./components/Blog/BlogListingPage";
 
 function App() {
-
-  return (
-    <>
-    <Navbar />
-      <h1>Parashift blog assignment</h1>
-    </>
-  )
+	return (
+		<>
+			<Navbar />
+			<BlogListingPage />
+		</>
+	);
 }
 
-export default App
+export default App;
