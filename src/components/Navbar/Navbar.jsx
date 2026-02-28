@@ -5,7 +5,7 @@ const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	return (
 		<>
-			<nav className="flex justify-between items-center px-6 py-6 shadow-md sticky top-0 bg-gray-500">
+			<nav className="flex justify-between items-center px-6 py-6 shadow-md sticky top-0 bg-gray-500 z-50">
                 {/* logo */}
 				<img src="/logo.svg" alt="logo" className="h-6 w-auto" />
 
