@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaTimes, FaBars } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -11,7 +12,8 @@ const Navbar = () => {
 
                 {/* Desktop blog */}
 				<div className="flex items-center space-x-3">
-					<span className="hidden md:block text-xl font-semibold text-red-900">Blog</span>
+					 <Link className="hidden md:block text-xl font-semibold text-red-900" to="/">Home</Link>
+					 <Link className="hidden md:block text-xl font-semibold text-red-900" to="/blogs">Blogs</Link>
 					<button
 						className="md:hidden text-3xl"
 						onClick={() => setMenuOpen(!menuOpen)}
@@ -23,9 +25,12 @@ const Navbar = () => {
 
             {/* Mobile view menu */}
             {menuOpen && (
-                <div className="md:hidden sticky top-19 bg-gray-400 p-4 text-center">
-                    <span className="text-xl font-semibold text-red-900">Blog</span>
+				<>
+                <div className="md:hidden sticky top-19 bg-gray-400 p-4 text-center flex justify-evenly">
+				 <Link className="text-xl font-semibold text-red-900" to="/">Home</Link>
+				 <Link className="text-xl font-semibold text-red-900" to="/blogs">Blogs</Link>
                 </div>
+				</>
             )}
 		</>
 	);
