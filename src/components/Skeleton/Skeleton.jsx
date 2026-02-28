@@ -1,7 +1,7 @@
 const Skeleton = () => {
 	return (
 		<>
-				<li className="wfull bg-white shadow-md rounded-lg  animate-pulse">
+				<li className="w-full bg-white shadow-md rounded-lg  animate-pulse">
 					{/* Image placeholder */}
 					<div className="w-full h-48 bg-gray-300"></div>
 
