@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useState, useEffect } from "react";
 import Skeleton from "../Skeleton/Skeleton";
 
@@ -21,6 +22,7 @@ const BlogListingPage = () => {
 				// Integrate Image API here
 				const blogsWithImages = data.map((post) => ({
 					...post,
+					slug: post.title.toLowerCase().replace(/\s+/g, "-"),
 					image: `${IMAGE_API}/seed/${post.id}/600/400`,
 				}));
 
@@ -62,21 +64,23 @@ const BlogListingPage = () => {
 									key={blog.id}
 									className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition"
 								>
-									<img
-										src={blog.image}
-										alt={blog.title}
-										className="w-full h-48 object-cover transform transition duration-300 hover:scale-105"
-									/>
+									<Link to={`/blogs/${blog.slug}`}>
+											<img
+												src={blog.image}
+												alt={blog.title}
+												className="w-full h-48 object-cover transform transition duration-300 hover:scale-105"
+											/>
 
-									<div className="p-4">
-										<div className="text-lg font-semibold mb-1">
-											{blog.title}
-										</div>
-									</div>
+											<div className="p-4">
+												<div className="text-lg font-semibold mb-1">
+													{blog.title}
+												</div>
+											</div>
 
-									<p className="text-gray-600 test-sm mx-3 mb-4">
-										{blog.body.slice(0, 80)}...
-									</p>
+											<p className="text-gray-600 test-sm mx-3 mb-4">
+												{blog.body.slice(0, 80)}...
+											</p>
+									</Link>
 								</li>
 							))}
 
