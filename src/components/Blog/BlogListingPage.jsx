@@ -9,6 +9,7 @@ const BlogListingPage = () => {
 	const [visiblecount, setvisibleCount] = useState(6);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [loadingMore, setLoadingMore] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -41,7 +42,7 @@ const BlogListingPage = () => {
 				{error && <p>Error: {error}</p>}
 				{loading ? (
 					<>
-						<ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-4">
+						<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-4">
 							{Array.from({ length: 6 }).map((_, index) => (
 								<Skeleton key={index} />
 							))}
@@ -79,23 +80,31 @@ const BlogListingPage = () => {
 								</li>
 							))}
 
-							{/* on click add new 6 blog post */}
-							{visiblecount < blogs.length && (
-								<button
-									onClick={() => {
-										setLoading(true);
-										setTimeout(() => {
-											setvisibleCount((prev) => prev + 6);
-											setLoading(false);
-										}, 2000);
-									}}
-									className=" p-4 m-4 bg-blue-800 rounded-lg font-semibold hover:bg-blue-600"
-								>
-									Load More
-								</button>
-							)}
+							{/* showing skeleton of next 6 blogs */}
+							{loadingMore &&
+								Array.from({ length: 6 }).map((_, index) => (
+									<Skeleton key={`loading-${index}`} />
+								))}
 						</ul>
 					</>
+				)}
+
+				{/* on click add new 6 blog post */}
+				{visiblecount < blogs.length && (
+					<div className="flex justify-center">
+						<button
+							onClick={() => {
+								setLoadingMore(true);
+								setTimeout(() => {
+									setvisibleCount((prev) => prev + 6);
+									setLoadingMore(false);
+								}, 2000);
+							}}
+							className=" p-4 m-4 bg-blue-800 rounded-lg font-semibold hover:bg-blue-600"
+						>
+							Load More
+						</button>
+					</div>
 				)}
 			</div>
 		</>
